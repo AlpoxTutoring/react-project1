@@ -1,1 +1,1 @@
-# react-project1
+# React Study 1st Project
