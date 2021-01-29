@@ -25,7 +25,7 @@ function LoginPage() {
             id: id,
             password:password
         }
-        axios.post('http://tutor-dev-api.alpox.dev/auth/login', body, config)
+        axios.post('https://tutor-dev-api.alpox.dev/auth/login', body, config)
             .then(response => {
                 if (response.data.success) {
 

@@ -31,7 +31,7 @@ function RegisterPage() {
             nickname:nickname,
             password:password
         }
-        axios.post('http://tutor-dev-api.alpox.dev/auth/register', body, config)
+        axios.post('https://tutor-dev-api.alpox.dev/auth/register', body, config)
             .then(response => {
                 if (response.data.success) {
 
