@@ -1,8 +1,8 @@
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 
 const headerStyle = css`
-  background-color: hotpink;
+  background-color: #4b79a1;
   font-size: 24px;
   border-radius: 4px;
   padding: 32px;
@@ -10,14 +10,10 @@ const headerStyle = css`
   &:hover {
     color: white;
   }
-`
+`;
 
 const Header = () => {
-    return (
-        <div css={headerStyle}>
-            헤더영역입니다
-        </div>
-    );
+  return <div css={headerStyle}>헤더영역입니다</div>;
 };
 
 export default Header;
