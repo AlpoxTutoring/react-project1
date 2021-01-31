@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import './RegisterPage.css'
 
 function RegisterPage() {
 
@@ -34,7 +35,6 @@ function RegisterPage() {
         axios.post('https://tutor-dev-api.alpox.dev/auth/register', body, config)
             .then(response => {
                 if (response.data.success) {
-
                     console.log(response.data)
                 } else {
                     console.log(response.data)
@@ -43,16 +43,19 @@ function RegisterPage() {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmitHandler}>
-                <label>아이디</label>
+        <div className="register-container">
+            <form className="register-form" onSubmit={onSubmitHandler}>
+                <h1 className="register-title">Community</h1>
+                <label className="register-form__label">UserId</label>
                 <input type="text" value={id} onChange={onUserIdHandler} />
-                <label>닉네임</label>
+                <label className="register-form__label">NickName</label>
                 <input type="text" value={nickname} onChange={onNicknamedHandler} />
-                <label>비밀번호</label>
+                <label className="register-form__label">Password</label>
                 <input type="password" value={password} onChange={onPasswordHandler} />
-                <button type="submit">
-                    회원가입
+
+                <br />
+                <button className="sign-in__button" type='submit' >
+                    Sign in
                 </button>
             </form>
         </div>
