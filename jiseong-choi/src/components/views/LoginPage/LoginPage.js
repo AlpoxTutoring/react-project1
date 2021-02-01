@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import './Loingpage.css'
 
 function LoginPage() {
 
@@ -28,7 +29,6 @@ function LoginPage() {
         axios.post('https://tutor-dev-api.alpox.dev/auth/login', body, config)
             .then(response => {
                 if (response.data.success) {
-
                     console.log(response.data)
                 } else {
                     console.log(response.data)
@@ -37,14 +37,16 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmitHandler}>
-                <label>아이디</label>
+        <div className="login-container">
+            <form className="login-form" onSubmit={onSubmitHandler}>
+                <label>UserId</label>
                 <input type="text" value={id} onChange={onUserIdHandler} />
-                <label>비밀번호</label>
+                <label>Password</label>
                 <input type="password" value={password} onChange={onPasswordHandler} />
-                <button type="submit">
-                    로그인
+
+                <br />
+                <button type='submit' >
+                    Login
                 </button>
             </form>
         </div>
