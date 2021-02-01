@@ -38,7 +38,6 @@ for (let i = 0; i < 24; i++) {
 const ContentsBox = () => {
   useEffect(() => {
     console.log('마운트됨');
-    console.log(Dummy);
   }, []);
   return (
     <div css={ContentsBoxStyle}>
