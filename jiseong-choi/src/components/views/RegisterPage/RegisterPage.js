@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './RegisterPage.css'
 
-function RegisterPage() {
+function RegisterPage(props) {
 
     const [id, setid] = useState("")
     const [nickname, setnickname] = useState("")
@@ -36,8 +36,10 @@ function RegisterPage() {
             .then(response => {
                 if (response.data.success) {
                     console.log(response.data)
+                    props.history.push('/login')
                 } else {
                     console.log(response.data)
+                    alert('registerFailed')
                 }
             })
     }

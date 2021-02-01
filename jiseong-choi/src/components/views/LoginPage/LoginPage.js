@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import './Loingpage.css'
 
-function LoginPage() {
+function LoginPage(props) {
 
     const [id, setid] = useState("")
     const [password, setpassword] = useState("")
@@ -30,8 +30,10 @@ function LoginPage() {
             .then(response => {
                 if (response.data.success) {
                     console.log(response.data)
+                    props.history.push('/')
                 } else {
                     console.log(response.data)
+                    alert('loginFailed')
                 }
             })
     }
