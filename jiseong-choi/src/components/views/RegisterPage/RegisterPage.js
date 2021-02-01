@@ -43,6 +43,7 @@ function RegisterPage() {
     }
 
     return (
+        
         <div className="register-container">
             <form className="register-form" onSubmit={onSubmitHandler}>
                 <h1 className="register-title">Community</h1>

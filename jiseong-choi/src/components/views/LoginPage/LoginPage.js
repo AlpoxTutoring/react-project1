@@ -37,18 +37,17 @@ function LoginPage() {
     }
 
     return (
-        <div className="login-container">
-            <form className="login-form" onSubmit={onSubmitHandler}>
-                <label>UserId</label>
-                <input type="text" value={id} onChange={onUserIdHandler} />
-                <label>Password</label>
-                <input type="password" value={password} onChange={onPasswordHandler} />
-
-                <br />
-                <button type='submit' >
-                    Login
-                </button>
-            </form>
+        <div className="login-wrapper">
+            <div className="login-container">
+                <form className="login-form" onSubmit={onSubmitHandler}>
+                    <h2 className="login-form__title">Community</h2>
+                    <input className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onUserIdHandler} />
+                    <input className="login-form__input" placeholder="Password" type="password" value={password} onChange={onPasswordHandler} />
+                    <button className="login-button" type='submit' >
+                        Login
+                    </button>
+                </form>
+            </div>
         </div>
     )
 }
