@@ -1,11 +1,15 @@
 import Header from 'components/Header/Header';
+import MainContainer from 'container/main/MainContainer';
+import Register from 'container/register/Register';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <>
-      {/* <Header /> */}
-      <div className="App">신났으면 좋겠다 리액트의 세계</div>
+      <Header />
+      <MainContainer />
+      <Route path="/register" component={Register} />
     </>
   );
 }
