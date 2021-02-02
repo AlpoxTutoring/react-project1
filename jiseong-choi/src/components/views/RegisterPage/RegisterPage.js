@@ -4,20 +4,20 @@ import './RegisterPage.css'
 
 function RegisterPage(props) {
 
-    const [id, setid] = useState("")
-    const [nickname, setnickname] = useState("")
-    const [password, setpassword] = useState("")
+    const [Inputs, setInputs] = useState({
+        id: "",
+        nickname: "",
+        password: ""
+    })
 
-    const onUserIdHandler = (e) => {
-        setid(e.currentTarget.value);
-    }
+    const { id, nickname, password } = Inputs;
 
-    const onNicknamedHandler = (e) => {
-        setnickname(e.currentTarget.value);
-    }
-
-    const onPasswordHandler = (e) => {
-        setpassword(e.currentTarget.value);
+    const onChange = (e) => {
+        const { value, name } = e.target;
+        setInputs(prev => ({
+            ...prev,
+            [name]:value
+        }))
     }
 
     const onSubmitHandler = (e) => {
@@ -42,6 +42,10 @@ function RegisterPage(props) {
                     alert('registerFailed')
                 }
             })
+            .catch(err => {
+                console.log(err)
+                alert("우리 서버가 장애에요")
+            })
     }
 
     return (
@@ -49,9 +53,9 @@ function RegisterPage(props) {
             <div className="register-container">
                 <form className="register-form" onSubmit={onSubmitHandler}>
                     <h1 className="register-title">Community</h1>
-                    <input className="register-form__input" placeholder="UserId" type="text" value={id} onChange={onUserIdHandler} />
-                    <input className="register-form__input" placeholder="NickName" type="text" value={nickname} onChange={onNicknamedHandler} />
-                    <input className="register-form__input" placeholder="Password" type="password" value={password} onChange={onPasswordHandler} />
+                    <input name="id" className="register-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} />
+                    <input name="nickname" className="register-form__input" placeholder="NickName" type="text" value={nickname} onChange={onChange} />
+                    <input name="password" className="register-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
 
                     <br />
                     <button className="sign-in__button" type='submit' >

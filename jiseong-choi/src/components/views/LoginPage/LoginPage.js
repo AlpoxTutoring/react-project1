@@ -4,16 +4,20 @@ import './Loingpage.css'
 
 function LoginPage(props) {
 
-    const [id, setid] = useState("")
-    const [password, setpassword] = useState("")
+    const [Inputs, setInputs] = useState({
+        id: "",
+        password:""
+    })
 
-    const onUserIdHandler = (e) => {
-        setid(e.currentTarget.value);
-    }
+    const { id, password } = Inputs;
 
-    const onPasswordHandler = (e) => {
-        setpassword(e.currentTarget.value);
-    }
+    const onChange = (e) => {
+    const { value, name } = e.target; 
+    setInputs(prev=>({
+      ...prev, 
+      [name]: value 
+        })
+    )};
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -28,6 +32,8 @@ function LoginPage(props) {
         }
         axios.post('https://tutor-dev-api.alpox.dev/auth/login', body, config)
             .then(response => {
+                console.log(response)
+                console.log(response.status)
                 if (response.data.success) {
                     console.log(response.data)
                     props.history.push('/')
@@ -36,6 +42,10 @@ function LoginPage(props) {
                     alert('loginFailed')
                 }
             })
+            .catch(err => {
+                console.log(err)
+                alert("우리 서버가 장애에요")
+            })
     }
 
     return (
@@ -43,8 +53,8 @@ function LoginPage(props) {
             <div className="login-container">
                 <form className="login-form" onSubmit={onSubmitHandler}>
                     <h2 className="login-form__title">Community</h2>
-                    <input className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onUserIdHandler} />
-                    <input className="login-form__input" placeholder="Password" type="password" value={password} onChange={onPasswordHandler} />
+                    <input name="id" className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} />
+                    <input name="password" className="login-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
                     <button className="login-button" type='submit' >
                         Login
                     </button>
