@@ -1,7 +1,7 @@
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const getDummyBoards = async () => {
-  await sleep(500);
+  await sleep(2000);
 
   return [
     {

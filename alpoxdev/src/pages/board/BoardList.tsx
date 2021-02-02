@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { getDummyBoards } from "common/dummy";
@@ -44,7 +44,7 @@ export const BoardListPage = () => {
 
     const newBoards = await getDummyBoards();
     setBoards(newBoards);
-  }, [boards]);
+  }, []);
 
   const onIncreaseCount = useCallback(() => {
     console.log(`onIncreateCount`, counter);
@@ -53,9 +53,9 @@ export const BoardListPage = () => {
   }, [counter]);
 
   // useEffect 사용
-  React.useEffect(() => {
+  useEffect(() => {
     onGetBoards();
-  }, []);
+  }, [onGetBoards]);
 
   return (
     <>
@@ -69,7 +69,7 @@ export const BoardListPage = () => {
 
       <BoardListView>
         {filteredBoards.map((board: any) => (
-          <BoardItemView>{JSON.stringify(board)}</BoardItemView>
+          <BoardItemView key={board.id}>{JSON.stringify(board)}</BoardItemView>
         ))}
       </BoardListView>
     </>
