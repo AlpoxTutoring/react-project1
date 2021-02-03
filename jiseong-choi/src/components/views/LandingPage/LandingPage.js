@@ -23,7 +23,7 @@ function LandingPage() {
         const createDate = createdAt.slice(0, 10);
         return (
             <div style={{border:'1px solid skyblue'}} key={id} url={`https://tutor-dev-api.alpox.dev/boards/{id}`}>
-                <a href={`/article/${id}`}>
+                <a href={`/boards/${id}`}>
                     <h2>Title : {title}</h2>
                     {mainImage && <img alt="thumbnail" src={`https://tutor-dev-api.alpox.dev/boards/${id.mainImage}`} />}
                     <p>Summary : {summary}</p>

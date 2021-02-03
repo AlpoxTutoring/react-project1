@@ -5,6 +5,7 @@ import LoginPage from './components/views/LoginPage/LoginPage.js';
 import NotFoundPage from './components/views/NotFoundPage/NotFoundPage.js';
 import RegisterPage from './components/views/RegisterPage/RegisterPage.js';
 import Header from './components/views/Header/Header'
+import ArticleDetailPage from './components/views/ArticleDetailPage/ArticleDetailPage.js';
 
 function App() {
 	return (	  
@@ -14,7 +15,8 @@ function App() {
 				<Switch>					
 					<Route exact path="/" component={LandingPage} />					
 					<Route exact path="/login" component={LoginPage} />	
-					<Route exact path="/register" component={RegisterPage} />					
+					<Route exact path="/register" component={RegisterPage} />	
+					<Route exact path="/boards/:articleId" component={ArticleDetailPage} />	
 					<NotFoundPage />					
 				</Switch>				
 			</div>			

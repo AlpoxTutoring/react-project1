@@ -33,7 +33,7 @@ function LoginPage(props) {
         axios.post('https://tutor-dev-api.alpox.dev/auth/login', body, config)
             .then(response => {
                 console.log(response)
-                if (response.status === 201) {
+                if (response.status === 200) {
                     window.localStorage.setItem('userId', response.body.userId); //서버 고쳐지면 다시하는걸로
                     props.history.push('/')
                 } else {
