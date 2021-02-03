@@ -13,7 +13,11 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {   "react/react-in-jsx-scope": "off",
+  rules: {
+    'no-unused-vars': 'off',
+    'import/no-unresolved': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   ignorePatterns: ['dist/', 'node_modules/'],
+
 };
