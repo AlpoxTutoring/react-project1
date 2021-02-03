@@ -5,12 +5,12 @@ import './RegisterPage.css'
 function RegisterPage(props) {
 
     const [Inputs, setInputs] = useState({
-        id: "",
+        email: "",
         nickname: "",
         password: ""
     })
 
-    const { id, nickname, password } = Inputs;
+    const { email, nickname, password } = Inputs;
 
     const onChange = (e) => {
         const { value, name } = e.target;
@@ -28,14 +28,15 @@ function RegisterPage(props) {
         }
 
         const body = {
-            id: id,
+            email: email,
             nickname:nickname,
             password:password
         }
         axios.post('https://tutor-dev-api.alpox.dev/auth/register', body, config)
             .then(response => {
-                if (response.data.success) {
-                    console.log(response.data)
+                console.log(response)
+                if (response.status === 201) {
+                    console.log(response.data.status)
                     props.history.push('/login')
                 } else {
                     console.log(response.data)
@@ -53,9 +54,9 @@ function RegisterPage(props) {
             <div className="register-container">
                 <form className="register-form" onSubmit={onSubmitHandler}>
                     <h1 className="register-title">Community</h1>
-                    <input name="id" className="register-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} />
-                    <input name="nickname" className="register-form__input" placeholder="NickName" type="text" value={nickname} onChange={onChange} />
-                    <input name="password" className="register-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
+                    <input required name="email" className="register-form__input" placeholder="email" type="email" value={email} onChange={onChange} />
+                    <input required name="nickname" className="register-form__input" placeholder="NickName" type="text" value={nickname} onChange={onChange} />
+                    <input required name="password" className="register-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
 
                     <br />
                     <button className="sign-in__button" type='submit' >

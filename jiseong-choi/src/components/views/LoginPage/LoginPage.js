@@ -33,9 +33,8 @@ function LoginPage(props) {
         axios.post('https://tutor-dev-api.alpox.dev/auth/login', body, config)
             .then(response => {
                 console.log(response)
-                console.log(response.status)
-                if (response.data.success) {
-                    console.log(response.data)
+                if (response.status === 201) {
+                    window.localStorage.setItem('userId', response.body.userId); //서버 고쳐지면 다시하는걸로
                     props.history.push('/')
                 } else {
                     console.log(response.data)
@@ -53,8 +52,8 @@ function LoginPage(props) {
             <div className="login-container">
                 <form className="login-form" onSubmit={onSubmitHandler}>
                     <h2 className="login-form__title">Community</h2>
-                    <input name="id" className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} />
-                    <input name="password" className="login-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
+                    <input required name="id" className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} />
+                    <input required name="password" className="login-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
                     <button className="login-button" type='submit' >
                         Login
                     </button>
