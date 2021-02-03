@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import RootRouter from 'routers'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RootRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );
-
