@@ -1,6 +1,6 @@
 import React from 'react';
-import { AuthJoinContainer } from '../../containers/Auth';
+import { AuthContainer } from '../../containers/Auth';
 
 export function AuthPage() {
-  return <AuthJoinContainer />;
+  return <AuthContainer />;
 }

@@ -8,8 +8,8 @@ export const RootRouter = () => {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/auth" component={AuthPage} />
-          <Route path="/" component={MainPage} />
+          <Route path="/" component={AuthPage} />
+          {/*<Route path="/" component={MainPage} />*/}
         </Switch>
       </BrowserRouter>
     </>
