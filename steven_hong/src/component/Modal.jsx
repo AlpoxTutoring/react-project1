@@ -32,7 +32,7 @@ function Modal({ className, onClose, maskClosable, closable, visible, children }
       <ModalOverlay visible={visible} />
       <ModalWrapper className={className} onClick={maskClosable ? onMaskClick : null} tabIndex="-1" visible={visible}>
         <ModalInner tabIndex="0" className="modal-inner">
-          {closable && <FontAwesomeIcon style={closeIconStyle} icon={faTimes} size="1x" onClick={close} />}
+          {closable && <FontAwesomeIcon css={closeIconStyle} icon={faTimes} size="1x" onClick={close} />}
           {children}
         </ModalInner>
       </ModalWrapper>
