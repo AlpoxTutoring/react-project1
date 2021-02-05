@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 
 function ArticleDetailPage(props) {
@@ -7,7 +7,7 @@ function ArticleDetailPage(props) {
 
     const [Article, setArticle] = useState([])
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get(`https://tutor-dev-api.alpox.dev/boards/${articleId}`)
             .then(response => {
                 console.log(response)

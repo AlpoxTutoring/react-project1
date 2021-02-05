@@ -34,10 +34,10 @@ function LoginPage(props) {
             .then(response => {
                 console.log(response)
                 if (response.status === 200) {
-                    window.localStorage.setItem('userId', response.body.userId); //서버 고쳐지면 다시하는걸로
+                    window.localStorage.setItem('accessToken', response.data.accessToken); //서버 고쳐지면 다시하는걸로
                     props.history.push('/')
                 } else {
-                    console.log(response.data)
+                    console.log(response)
                     alert('loginFailed')
                 }
             })
