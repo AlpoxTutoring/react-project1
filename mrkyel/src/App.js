@@ -1,15 +1,20 @@
-import Header from 'components/Header/Header';
-import MainContainer from 'container/main/MainContainer';
-import Register from 'container/register/Register';
+import Layout from 'container/layout/Layout';
+import Register from 'pages/register/Register';
 import { Route } from 'react-router-dom';
-import './App.css';
+import { Global } from '@emotion/react';
+import './Reset.jsx';
+import reset from 'Reset.jsx';
+import FreeBoard from 'pages/freeboard/FreeBoard.js';
+import WriteBoard from 'pages/writeboard/writeboard.js';
 
 function App() {
   return (
     <>
-      <Header />
-      <MainContainer />
+      <Global styles={reset} />
+      <Route exact path="/" component={Layout} />
       <Route path="/register" component={Register} />
+      <Route path="/freeboard" component={FreeBoard} />
+      <Route path="/writeboard" component={WriteBoard} />
     </>
   );
 }

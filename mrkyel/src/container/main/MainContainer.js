@@ -1,11 +1,9 @@
+import React from 'react';
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-
-import ContentsBox from 'components/ContentsBox/ContentsBox';
 import Login from 'components/Login/Login';
-import React from 'react';
 
-const MainContainer = () => {
+const MainContainer = ({ children }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -17,7 +15,7 @@ const MainContainer = () => {
   return (
     <>
       <Login />
-      <ContentsBox />
+      {children}
     </>
   );
 };
