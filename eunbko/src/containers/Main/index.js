@@ -1,5 +1,8 @@
 import React from 'react';
-
+import { Header, Footer } from "components";
 export function MainContainer() {
-  return <>메인페이지입니다</>;
+  return <>
+  <Header/>
+  메인페이지입니다
+  <Footer/></>;
 }
