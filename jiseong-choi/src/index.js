@@ -9,4 +9,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
+const { githubURI, userName } = require('./info');
+console.log(`Let's go with ${githubURI}/${userName}`);
