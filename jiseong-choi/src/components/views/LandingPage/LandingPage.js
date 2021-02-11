@@ -8,9 +8,8 @@ function LandingPage() {
     useEffect(() => {
         axios.get('https://tutor-dev-api.alpox.dev/boards')
             .then(response => {
-                console.log(response)
-                if (response.data) {
-                    setArticles(response.data)
+                if (response.data.rows) {
+                    setArticles(response.data.rows)
                 } else {
                     alert('글을 가져오는데 실패했습니다.')
                     setArticles(null)
@@ -18,13 +17,38 @@ function LandingPage() {
             })
     }, [])
 
-    console.log(Articles)
+    const renderCards = Articles.map((article) => {
+        const { id, title, subtitle, content, contentType, updatedAt, userId } = article
+        console.log(id, title, subtitle, content, contentType, updatedAt, userId)
+        return (
+                <div key={id} style={{ position: 'relative' }}>
+                <a href={`boards/${id}`} style={{ textDecoration:'none',color:'violet'}} >
+                        <h2>
+                            {title}
+                        </h2>
+                        <h3>
+                            {subtitle}
+                        </h3>
+                        <p>{content.slice(0, 20)}...</p>
+                        <p>{updatedAt}</p>
+                        <p>Writer : { userId }</p>
+                    </a>
+                </div>
+        )
+    });
+    
 
-    return (
+    if (Articles) {
+        return (
+            <>
+                {renderCards}
+            </>
+        )
+    } else {
         <div>
-            ...loading
+            ...Loading
         </div>
-    )
+    }
 }
 
 
