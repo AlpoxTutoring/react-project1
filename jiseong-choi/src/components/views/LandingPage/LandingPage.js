@@ -19,7 +19,6 @@ function LandingPage() {
 
     const renderCards = Articles.map((article) => {
         const { id, title, subtitle, content, contentType, updatedAt, userId } = article
-        console.log(id, title, subtitle, content, contentType, updatedAt, userId)
         return (
                 <div key={id} style={{ position: 'relative' }}>
                 <a href={`boards/${id}`} style={{ textDecoration:'none',color:'violet'}} >
@@ -29,7 +28,7 @@ function LandingPage() {
                         <h3>
                             {subtitle}
                         </h3>
-                        <p>{content.slice(0, 20)}...</p>
+                    <p>{content ? content.slice(0,6)+"...": "내용이 없습니다"}</p>
                         <p>{updatedAt}</p>
                         <p>Writer : { userId }</p>
                     </a>

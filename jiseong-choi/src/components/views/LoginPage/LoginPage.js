@@ -22,15 +22,11 @@ function LoginPage(props) {
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        const config = {
-            headers:{ 'Authorization': 'Bearer <accessToken>' }
-        }
-
         const body = {
             id: id,
             password:password
         }
-        axios.post('https://tutor-dev-api.alpox.dev/auth/login', body, config)
+        axios.post('https://tutor-dev-api.alpox.dev/auth/login', body)
             .then(response => {
                 console.log(response)
                 if (response.status === 200) {
