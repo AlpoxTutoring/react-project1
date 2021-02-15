@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainPage } from 'pages';
+import { MainPage } from '../pages/Main';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // 루트 라우터
