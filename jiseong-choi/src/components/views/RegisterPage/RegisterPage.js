@@ -23,16 +23,12 @@ function RegisterPage(props) {
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
-        const config = {
-            headers:{ 'Authorization': 'Bearer <accessToken>' }
-        }
-
         const body = {
             email: email,
             nickname:nickname,
             password:password
         }
-        axios.post('https://tutor-dev-api.alpox.dev/auth/register', body, config)
+        axios.post('https://tutor-dev-api.alpox.dev/auth/register', body)
             .then(response => {
                 console.log(response)
                 if (response.status === 201) {
