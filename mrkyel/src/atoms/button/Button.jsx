@@ -5,10 +5,10 @@ export const Button = styled.button`
   border: none;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 15px;
   margin: 4px 2px;
   color: white;
-  padding: 15px 30px;
+  padding: 5px 20px;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;

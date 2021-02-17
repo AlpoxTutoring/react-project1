@@ -1,0 +1,9 @@
+.editor-wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  margin-top: 50px;
+}
+
+.ck-editor__editable {
+  min-height: 500px;
+}

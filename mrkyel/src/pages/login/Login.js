@@ -5,22 +5,23 @@ import styled from '@emotion/styled';
 import { BaseUrl } from 'config/constants';
 import { requestAxios } from 'config/commonRequest';
 
-const Register = ({ history }) => {
-  const [{ email, nickName, password }, onChange] = useInputs({
-    email: '',
-    nickName: '',
+const Login = ({ history }) => {
+  const [{ id, password }, onChange] = useInputs({
+    id: '',
     password: '',
   });
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(email, nickName, password);
+    console.log(id, password);
 
     try {
-      await requestAxios.post(`${BaseUrl}/register`, { email, nickName, password }).then(res => {
+      await requestAxios.post(`${BaseUrl}/login`, { id, password }).then(res => {
         console.log(res);
-        alert('회원가입을 축하합니다');
+        localStorage.setItem('ACCESS_TOKEN', res.data.accessToken);
+        alert('로그인에 성공하였습니다');
         history.push('/');
+        window.location.reload();
       });
     } catch (error) {
       console.log(error);
@@ -37,20 +38,8 @@ const Register = ({ history }) => {
             type="email"
             placeholder="E-mail"
             required
-            name="email"
-            value={email}
-            onChange={onChange}
-          />
-        </InputRow>
-        <InputRow>
-          <label style={{ flex: 1 }}>닉네임</label>
-          <input
-            style={{ padding: '5px' }}
-            type="text"
-            placeholder="닉네임"
-            required
-            name="nickName"
-            value={nickName}
+            name="id"
+            value={id}
             onChange={onChange}
           />
         </InputRow>
@@ -68,14 +57,14 @@ const Register = ({ history }) => {
         </InputRow>
         <ButtonRow>
           <Button onClick={handleSubmit} color={'deepskyblue'}>
-            회원가입
+            로그인
           </Button>
         </ButtonRow>
       </RegisterForm>
     </RegisterWrapper>
   );
 };
-export default Register;
+export default Login;
 
 const RegisterWrapper = styled.div`
   display: flex;

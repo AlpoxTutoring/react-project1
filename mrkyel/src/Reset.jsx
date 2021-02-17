@@ -132,5 +132,8 @@ const reset = css`
   td {
     border: 1px solid #bcbcbc;
   }
+  *:focus {
+    outline: none;
+  }
 `;
 export default reset;

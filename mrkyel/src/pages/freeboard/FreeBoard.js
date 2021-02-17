@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Button } from 'atoms/button/Button';
 import axios from 'axios';
@@ -22,10 +24,12 @@ for (let i = 0; i < 24; i++) {
 }
 
 const FreeBoard = ({ history }) => {
+  const [data, setData] = useState([]);
   const handleSearch = async () => {
     try {
       await axios.get(`${BaseUrl}/boards`).then(res => {
         console.log(res);
+        setData(res.data.rows);
       });
     } catch (error) {
       console.log(error);
@@ -42,8 +46,7 @@ const FreeBoard = ({ history }) => {
         <Button onClick={handleSearch} style={{ float: 'right', padding: 5 }} color={'deepskyblue'}>
           조회
         </Button>
-        <table>
-          <caption>자유게시판</caption>
+        <table css={tableStyle}>
           <thead>
             <tr>
               <th>게시글 유형</th>
@@ -53,14 +56,14 @@ const FreeBoard = ({ history }) => {
             </tr>
           </thead>
           <tbody>
-            {DummyBoard.map(el => (
+            {data.map(el => (
               <tr key={el.id}>
-                <td>{el.category}</td>
+                <td>{el.subtitle}</td>
                 <td>
                   <Link to={`/freeboard/${el.id}`}>{el.title}</Link>
                 </td>
-                <td>{el.nickName}</td>
-                <td>{el.createDate}</td>
+                <td>{el.userId}</td>
+                <td>{el.createdAt}</td>
               </tr>
             ))}
           </tbody>
@@ -75,10 +78,15 @@ const FreeBoard = ({ history }) => {
 export default FreeBoard;
 
 const BoardWrapper = styled.div`
-  height: 700px;
+  height: 600px;
   width: 1200px;
   border: 2px solid lightskyblue;
   padding: 5px;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 50px;
+`;
+
+const tableStyle = css`
+  height: 300px;
+  font: initial;
 `;

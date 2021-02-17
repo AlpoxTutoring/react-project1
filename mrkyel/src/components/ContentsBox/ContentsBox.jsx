@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
