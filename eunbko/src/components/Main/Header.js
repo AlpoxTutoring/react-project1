@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
-// import { shadow, media } from 'lib/styleUtils';
 
 // 상단 고정, 그림자
 const Positioner = styled.div`
@@ -28,7 +27,6 @@ const HeaderContents = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
   padding-right: 1rem;
   padding-left: 1rem;
 `;
@@ -66,30 +64,3 @@ export const Header = ({ children }) => {
   );
 };
 
-//
-// const HeaderWrapper = styled.div`
-//     display: flex;
-//     position: fixed;
-//     align-items: center;
-//     justify-content: left;
-//     height: 60px;
-//     width: 100%;
-//     top: 0px;
-//     z-index: 5;
-//
-//     background: white;
-//     color: black;
-//     border-bottom: 1px solid ${oc.indigo[7]};
-//     box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.20);
-//
-//     /* 폰트 */
-//     font-size: 2.5rem;
-// `;
-//
-// export const Header = () => {
-//     return (<HeaderWrapper>
-//         <span>Mint Camp</span>
-//     <button>Login</button>
-//         <button>Join</button>
-//     </HeaderWrapper>)
-// }

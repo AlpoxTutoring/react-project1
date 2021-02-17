@@ -9,6 +9,8 @@ export const RootRouter = () => {
       <BrowserRouter>
         <Switch>
           <Route path="/" component={MainPage} />
+          <Route path="/auth" component={MainPage} />
+
         </Switch>
       </BrowserRouter>
     </>

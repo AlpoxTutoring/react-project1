@@ -2,48 +2,71 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MainContainer } from '../../containers/Main';
 import { Header, Footer, Modal } from '../../components';
-import { Button } from '../../lib';
+import { HeaderButton } from '../../lib';
 import Portal from '../../components/Portal';
-import { LoginPopup } from './LoginPopup';
+import {Modal2} from '../../components/Main'
 
 export function MainPage() {
   const [isShow, setIsShow] = useState(false);
-  const handlePopup = () => {
+  const [popIdx, setPopIdx] = useState(0);
+
+
+  const handlePopup = (index) => {
     setIsShow(true);
+    setPopIdx(index);
   };
   const onConfirm = () => {
-    console.log('확인');
     setIsShow(false);
   };
   const onCancel = () => {
-    console.log('취소');
     setIsShow(false);
   };
+
 
   return (
     <>
       <Header>
-        <Button color="white" background="#00BFA5" onclick={handlePopup}>
+        <HeaderButton color="white" background="#00BFA5" onClick={()=>handlePopup(0)} >
           로그인
-        </Button>
-        <Button color="black" background="lightgrey">
+        </HeaderButton>
+        <HeaderButton color="black" background="lightgrey" onClick={()=>handlePopup(1)}>
           회원가입
-        </Button>
+        </HeaderButton>
       </Header>
       <MainContainer />
       <Footer />
-      <Portal>
-        <Modal
-          title="정말로 삭제하시겠습니까?"
-          confirmText="삭제"
-          cancelText="취소"
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-          visible={isShow}
-        >
-          데이터를 정말로 삭제하시겠습니까?
-        </Modal>
-      </Portal>
-    </>
+
+     <Portal>
+              {/* <AuthPopup index={popIdx} isShow={isShow}/> */}
+
+       {popIdx===0 &&(
+     <Modal2
+title="Login"
+ confirmText="로그인"
+ cancelText="취소"
+  onConfirm={onConfirm}
+   onCancel={onCancel}
+   visible={isShow}
+ >
+   <span>ID&nbsp;&nbsp;&nbsp;&nbsp;<input/></span><br/>
+   <span>PW&nbsp;&nbsp;<input/></span>
+</Modal2> )}
+
+{popIdx===1 &&(
+     <Modal2
+  title="Join"
+  confirmText="가입"
+  cancelText="취소"
+  onConfirm={onConfirm}
+   onCancel={onCancel}
+   visible={isShow}
+ >
+   <span>EMAIL&nbsp;&nbsp;&nbsp;&nbsp;<input/></span><br/>
+   <span>NICKNAME&nbsp;&nbsp;&nbsp;&nbsp;<input/></span><br/>
+   <span>PW&nbsp;&nbsp;<input/></span>
+</Modal2> )}
+</Portal>
+</>
   );
 }
+
