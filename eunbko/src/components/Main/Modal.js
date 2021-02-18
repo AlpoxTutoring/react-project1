@@ -1,43 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import oc from 'open-color';
-import { HeaderButton } from 'lib';
+import styled from 'styled-components';
+import { HeaderButton } from 'styles';
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0
-  }
-  to {
-    opacity: 1
-  }
-`;
+export function Modal({
+  title,
+  children,
+  confirmText,
+  cancelText,
+  onConfirm,
+  onCancel,
+  visible,
+}) {
+  const [animate, setAnimate] = useState(false);
+  const [localVisible, setLocalVisible] = useState(visible);
 
-const fadeOut = keyframes`
-  from {
-    opacity: 1
-  }
-  to {
-    opacity: 0
-  }
-`;
+  useEffect(() => {
+    // visible 값이 true -> false 가 되는 것을 감지
+    if (localVisible && !visible) {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 250);
+    }
+    setLocalVisible(visible);
+  }, [localVisible, visible]);
 
-const slideUp = keyframes`
-  from {
-    transform: translateY(200px);
-  }
-  to {
-    transform: translateY(0px);
-  }
-`;
+  if (!animate && !localVisible) return null;
 
-const slideDown = keyframes`
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(200px);
-  }
-`;
+  return (
+    <ModalWrapper>
+      <ModalContents>
+        <h3>{title}</h3>
+        <p>{children}</p>
+        <ButtonGroup>
+          <ShortMarginButton color="gray" onClick={onCancel}>
+            {cancelText}
+          </ShortMarginButton>
+          <ShortMarginButton color="pink" onClick={onConfirm}>
+            {confirmText}
+          </ShortMarginButton>
+        </ButtonGroup>
+      </ModalContents>
+    </ModalWrapper>
+  );
+}
 
 // 모달 딤
 const ModalWrapper = styled.div`
@@ -78,45 +82,6 @@ const ShortMarginButton = styled(HeaderButton)`
     margin-left: 0.5rem;
   }
 `;
-
-export function Modal({
-  title,
-  children,
-  confirmText,
-  cancelText,
-  onConfirm,
-  onCancel,
-  visible,
-}) {
-  const [animate, setAnimate] = useState(false);
-  const [localVisible, setLocalVisible] = useState(visible);
-  useEffect(() => {
-    // visible 값이 true -> false 가 되는 것을 감지
-    if (localVisible && !visible) {
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 250);
-    }
-    setLocalVisible(visible);
-  }, [localVisible, visible]);
-
-  if (!animate && !localVisible) return null;
-  return (
-    <ModalWrapper>
-      <ModalContents>
-        <h3>{title}</h3>
-        <p>{children}</p>
-        <ButtonGroup>
-          <ShortMarginButton color="gray" onClick={onCancel}>
-            {cancelText}
-          </ShortMarginButton>
-          <ShortMarginButton color="pink" onClick={onConfirm}>
-            {confirmText}
-          </ShortMarginButton>
-        </ButtonGroup>
-      </ModalContents>
-    </ModalWrapper>
-  );
-}
 
 Modal.defaultProps = {
   confirmText: '확인',

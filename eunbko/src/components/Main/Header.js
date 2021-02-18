@@ -2,6 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';
 
+export const Header = ({ children }) => {
+  return (
+    <Positioner>
+      <WhiteBackground>
+        <HeaderContents>
+          <Logo>MintCamp</Logo>
+          <Spacer />
+          {children}
+        </HeaderContents>
+      </WhiteBackground>
+      <GradientBorder />
+    </Positioner>
+  );
+};
 
 // 상단 고정, 그림자
 const Positioner = styled.div`
@@ -48,19 +62,3 @@ const GradientBorder = styled.div`
   height: 3px;
   background: linear-gradient(to right, ${oc.teal[6]}, ${oc.cyan[5]});
 `;
-
-export const Header = ({ children }) => {
-  return (
-    <Positioner>
-      <WhiteBackground>
-        <HeaderContents>
-          <Logo>MintCamp</Logo>
-          <Spacer />
-          {children}
-        </HeaderContents>
-      </WhiteBackground>
-      <GradientBorder />
-    </Positioner>
-  );
-};
-
