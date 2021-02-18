@@ -57,7 +57,7 @@ const ModalContents = styled.div`
   padding: 1.5rem;
   background: white;
   border-radius: 2px;
-  text-align:center;
+  text-align: center;
   h3 {
     margin: 0;
     font-size: 1.7rem;
@@ -65,9 +65,7 @@ const ModalContents = styled.div`
   p {
     font-size: 1.125rem;
   }
-  
 `;
-
 
 const ButtonGroup = styled.div`
   margin-top: 3rem;
@@ -81,7 +79,7 @@ const ShortMarginButton = styled(HeaderButton)`
   }
 `;
 
-export function Modal2({
+export function Modal({
   title,
   children,
   confirmText,
@@ -120,7 +118,7 @@ export function Modal2({
   );
 }
 
-Modal2.defaultProps = {
+Modal.defaultProps = {
   confirmText: '확인',
   cancelText: '취소',
 };
