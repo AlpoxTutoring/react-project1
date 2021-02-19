@@ -15,8 +15,6 @@ function Header() {
                 </nav>
             </div>
         )
-    } else {
-        
     }
 
     return (

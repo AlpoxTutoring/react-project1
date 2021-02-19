@@ -1,0 +1,28 @@
+.BoardList {
+}
+
+.BoardItem {
+  padding: 10px 22px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.BoardItem:last-child {
+  border-bottom: 0;
+}
+
+.BoardItem .title {
+  font-size: 18px;
+  font-weight: bolder;
+
+  color: black;
+}
+
+.BoardItem .subtitle {
+  margin-top: 5px;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  color: #aaa;
+}

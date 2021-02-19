@@ -1,0 +1,22 @@
+.Header {
+  width: 100%;
+  height: 64px;
+
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+
+  background-color: green;
+}
+
+.Logo {
+  font-size: 22px;
+  font-weight: 200;
+  color: white;
+}
+
+.Content {
+  min-height: calc(100vh - 64px);
+  padding: 13px;
+}
