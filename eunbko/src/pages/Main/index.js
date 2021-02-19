@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { MainContainer } from '../../containers/Main';
+import { MainContainer } from 'containers/Main';
 import { Header, Footer, Modal, Portal } from 'components';
-import { HeaderButton } from '../../styles';
-import { api } from '../../utils/api';
+import { HeaderButton } from 'styles';
+import { api } from 'utils/api';
 import { AuthPopup } from '../../containers/Main/AuthPopup';
 
 export function MainPage() {
@@ -108,22 +108,6 @@ export function MainPage() {
 
   return (
     <>
-      <Header>
-        <HeaderButton
-          color="white"
-          background="#00BFA5"
-          onClick={() => handlePopup(0)}
-        >
-          로그인
-        </HeaderButton>
-        <HeaderButton
-          color="black"
-          background="lightgrey"
-          onClick={() => handlePopup(1)}
-        >
-          회원가입
-        </HeaderButton>
-      </Header>
       <MainContainer />
       <Footer />
 

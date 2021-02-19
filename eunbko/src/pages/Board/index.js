@@ -6,7 +6,6 @@ import { BoardContainer } from '../../containers/Board';
 export function BoardPage() {
   return (
     <>
-      <Header>헤더입니다ㅏ아</Header>
       <BoardContainer />
       <Footer />
     </>
