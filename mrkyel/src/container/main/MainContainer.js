@@ -1,13 +1,21 @@
-import ContentsBox from 'components/ContentsBox/ContentsBox';
-import Login from 'components/Login/Login';
 import React from 'react';
+import { useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
+import Login from 'components/Login/Login';
 
-const MainContainer = () => {
-  if (window.location.pathname === '/register') return null;
+const MainContainer = ({ children }) => {
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const isRegister = useMemo(() => pathname === '/register', [pathname]);
+  if (isRegister) return null;
+
+  //   if (window.location.pathname === '/register') return null;
+
   return (
     <>
       <Login />
-      <ContentsBox />
+      {children}
     </>
   );
 };

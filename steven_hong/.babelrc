@@ -1,0 +1,9 @@
+{
+    "env": {
+      "production": {
+        "plugins": ["@emotion"]
+      }
+    },
+    "plugins": ["@emotion"]
+  }
+  
