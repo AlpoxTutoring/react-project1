@@ -16,7 +16,7 @@ const footerStyle = css`
 `;
 
 const Footer = () => {
-  return <div style={footerStyle}></div>;
+  return <div style={footerStyle}>푸터</div>;
 };
 
 export default Footer;
