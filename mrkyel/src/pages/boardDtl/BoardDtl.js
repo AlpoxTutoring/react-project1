@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 const BoardDtl = () => {
   return (
     <>
-      {' '}
       <BoardWrapper>
         <h1>제목을 쓸 것</h1>
         <label>제목?</label>

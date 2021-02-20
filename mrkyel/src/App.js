@@ -4,12 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import { Global } from '@emotion/react';
 import './Reset.jsx';
 import reset from 'Reset.jsx';
-import FreeBoard from 'pages/freeboard/FreeBoard.js';
 import WriteBoard from 'pages/writeboard/writeboard.js';
 import EmptyPage from 'pages/EmptyPage.js';
 import Header from 'components/Header/Header';
 import Login from 'pages/login/Login.js';
-import BoardDtl from 'pages/boardDtl/BoardDtl.js';
+import FreeBoardRouter from './routers/FreeBoardRouter';
 
 function App() {
   return (
@@ -20,8 +19,9 @@ function App() {
         <Route exact path="/" component={Layout} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route exact path="/freeboard" component={FreeBoard} />
-        <Route path="/freeboard/:id" component={BoardDtl} />
+        <Route path="/freeboard">
+          <FreeBoardRouter />
+        </Route>
         <Route path="/writeboard" component={WriteBoard} />
         <Route component={EmptyPage} />
       </Switch>

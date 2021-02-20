@@ -1,6 +1,6 @@
 import useInputs from 'Hooks/useInputs';
 import React from 'react';
-import { Button } from 'atoms/button/Button';
+import { Button } from 'atoms/buttons/Button';
 import styled from '@emotion/styled';
 import { BaseUrl } from 'config/constants';
 import { requestAxios } from 'config/commonRequest';

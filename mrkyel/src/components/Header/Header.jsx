@@ -83,7 +83,7 @@ const Header = () => {
       <div css={headerStyle}>
         <ul css={menuStyle}>
           {Menus.map((el, index) => (
-            <Link key={index} to={`${el.url}`}>
+            <Link key={index} to={`/${el.url}`}>
               <li>{el.name}</li>
             </Link>
           ))}

@@ -135,5 +135,8 @@ const reset = css`
   *:focus {
     outline: none;
   }
+  .ck-editor__editable {
+    min-height: 500px;
+  }
 `;
 export default reset;

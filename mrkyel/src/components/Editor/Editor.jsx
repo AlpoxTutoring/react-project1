@@ -2,9 +2,8 @@
 import { css } from '@emotion/react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Button } from 'atoms/button/Button';
+import { Button } from 'atoms/buttons/Button';
 import useInputs from 'Hooks/useInputs';
-import './Editor.css';
 import { useState } from 'react';
 import { BaseUrl } from 'config/constants';
 import { requestAxios } from 'config/commonRequest';
@@ -20,10 +19,10 @@ const Editor = ({ history }) => {
     e.preventDefault();
     console.log('제출할껀뎅');
     try {
-      await requestAxios.post(`${BaseUrl}/boards`, { title, subtitle, content }).then(res => {
-        console.log(res);
-        history.push('/freeboard');
-      });
+      const res = await requestAxios.post(`${BaseUrl}/boards`, { title, subtitle, content });
+
+      console.log(res);
+      history.push('/freeboard');
     } catch (error) {
       return error;
     }
@@ -39,7 +38,7 @@ const Editor = ({ history }) => {
   };
 
   return (
-    <div className={'editor-wrapper'}>
+    <div css={containerStyle}>
       <form>
         <select css={selectStyle} value={subtitle} onChange={handleChange}>
           <option value="total">전체</option>
@@ -57,18 +56,7 @@ const Editor = ({ history }) => {
         <CKEditor
           editor={ClassicEditor}
           config={{ placeholder: '여기에 글을 작성하실 수 있습니다' }}
-          // data="<p>여기에 글을 작성하실 수 있습니다</p>"
-          onReady={editor => {
-            // You can store the "editor" and use when it is needed.
-            console.log('Editor is ready to use!', editor);
-          }}
           onChange={editorChange}
-          onBlur={(event, editor) => {
-            console.log('Blur.', editor);
-          }}
-          onFocus={(event, editor) => {
-            console.log('Focus.', editor);
-          }}
         />
 
         <Button onClick={handleSubmit} style={{ float: 'right', padding: 5 }} color={'deepskyblue'}>
@@ -80,6 +68,12 @@ const Editor = ({ history }) => {
 };
 
 export default Editor;
+
+const containerStyle = css`
+  margin: 0 auto;
+  width: 1200px;
+  margin-top: 50px;
+`;
 
 const selectStyle = css`
   border: 1px solid #c4c4c4;

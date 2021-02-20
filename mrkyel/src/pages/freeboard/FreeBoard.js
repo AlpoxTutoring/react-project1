@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Button } from 'atoms/button/Button';
+import { Button } from 'atoms/buttons/Button';
 import axios from 'axios';
 import { BaseUrl } from 'config/constants';
 import dayjs from 'dayjs';
@@ -27,18 +27,22 @@ const FreeBoard = ({ history }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const handleSearch = async () => {
+    if (loading) return;
+
     try {
       setError(null);
       setData(null);
       setLoading(true);
-      await axios.get(`${BaseUrl}/boards`).then(res => {
-        setData(res.data.rows);
-      });
+      const res = await axios.get(`/boards`);
+
+      setData(res.data.rows);
     } catch (e) {
       setError(e);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const writeBoard = () => {
@@ -46,7 +50,9 @@ const FreeBoard = ({ history }) => {
   };
 
   if (loading) return <div>로딩중..</div>;
+
   if (error) return <div>에러가 발생했습니다</div>;
+
   if (!data) return null;
 
   return (

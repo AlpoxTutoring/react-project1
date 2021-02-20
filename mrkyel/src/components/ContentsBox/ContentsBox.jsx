@@ -31,15 +31,18 @@ for (let i = 0; i < 24; i++) {
     category: `자유게시판${i}`,
     title: `리액트를 잘 하고 싶은 개발자${i}`,
     nickName: `라일락꽃향기${i}`,
-    viewCount: `1,204${i}`,
+    viewCount: 1204,
     createDate: new Date(),
   });
 }
+
 const ContentsBox = () => {
   return (
     <div css={ContentsBoxStyle}>
       {Dummy.map(el => (
-        <ContentsBoxWrapper key={el.id}>{el.category}</ContentsBoxWrapper>
+        <ContentsBoxWrapper key={el.id}>
+          {el.category} {el.viewCount.toLocaleString()}
+        </ContentsBoxWrapper>
       ))}
     </div>
   );
