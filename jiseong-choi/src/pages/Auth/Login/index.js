@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import './Loingpage.css'
+import './index.css'
 
-function LoginPage(props) {
+function Login(props) {
 
     const [Inputs, setInputs] = useState({
         id: "",
@@ -59,4 +59,4 @@ function LoginPage(props) {
     )
 }
 
-export default LoginPage
+export default Login

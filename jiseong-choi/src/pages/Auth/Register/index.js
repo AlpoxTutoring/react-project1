@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import './RegisterPage.css'
+import './index.css'
 
-function RegisterPage(props) {
+function Register(props) {
 
     const [Inputs, setInputs] = useState({
         email: "",
@@ -64,4 +64,4 @@ function RegisterPage(props) {
     )
 }
 
-export default RegisterPage
+export default Register

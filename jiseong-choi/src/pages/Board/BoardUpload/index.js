@@ -3,7 +3,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios'
 
-function ArticleUploadPage(props) {
+function BoardUpload(props) {
 
     const token = window.localStorage.getItem('accessToken')
 
@@ -120,4 +120,4 @@ function ArticleUploadPage(props) {
     )
 }
 
-export default ArticleUploadPage
+export default BoardUpload

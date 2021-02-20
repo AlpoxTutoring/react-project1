@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
-import './NotFoundPage.css'
+import './index.css'
 
-function NotFoundPage() {
+function Loading() {
     useEffect(() => {
         alert("NotFoundPage")
     }, [])
@@ -12,4 +12,4 @@ function NotFoundPage() {
     )
 }
 
-export default NotFoundPage
+export default Loading

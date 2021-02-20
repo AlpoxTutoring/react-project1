@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 
-function ArticleDetailPage(props) {
+function BoardDetail(props) {
 
     const articleId = props.match.params.articleId
 
@@ -34,4 +34,4 @@ function ArticleDetailPage(props) {
     }
 }
 
-export default ArticleDetailPage
+export default BoardDetail
