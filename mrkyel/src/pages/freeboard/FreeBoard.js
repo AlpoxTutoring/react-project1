@@ -25,20 +25,29 @@ for (let i = 0; i < 24; i++) {
 
 const FreeBoard = ({ history }) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const handleSearch = async () => {
     try {
+      setError(null);
+      setData(null);
+      setLoading(true);
       await axios.get(`${BaseUrl}/boards`).then(res => {
-        console.log(res);
         setData(res.data.rows);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      setError(e);
     }
+    setLoading(false);
   };
 
   const writeBoard = () => {
     history.push('/writeboard');
   };
+
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
+  if (!data) return null;
 
   return (
     <>
