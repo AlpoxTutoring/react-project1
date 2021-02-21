@@ -1,6 +1,6 @@
-import { Layout } from 'components/views/Layout'
+import { Layout } from 'components/Layout'
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch } from 'react-router-dom'
 import BoardRouter from './board'
 
 function RootRouter() {
