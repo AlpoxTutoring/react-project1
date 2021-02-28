@@ -9,24 +9,40 @@ import { useState } from 'react';
 import { BaseUrl } from 'config/constants';
 import { requestAxios } from 'config/commonRequest';
 
-const Editor = ({ history }) => {
+import { useHistory } from 'react-router-dom';
+
+const Editor = () => {
+  const history = useHistory();
+  console.log(`Editor history 체크`, history);
+
   const [content, setContent] = useState('');
   const [subtitle, setSubtitle] = useState('total');
   const [{ title }, onChange] = useInputs({ title: '' });
 
-  console.log(localStorage.getItem('ACCESS_TOKEN'));
+  //   console.log(localStorage.getItem('ACCESS_TOKEN'));
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('제출할껀뎅');
+
     try {
-      await requestAxios.post(`${BaseUrl}/boards`, { title, subtitle, content }).then(res => {
-        console.log(res);
+      const response = await requestAxios.post(`${BaseUrl}/boards`, { title, subtitle, content });
+      const { status, data } = response;
+
+      if (status === 201) {
+        // console.log(data, history);
         history.push('/freeboard');
-      });
+      }
     } catch (error) {
+      console.log(error);
       return error;
     }
+
+    // try {
+    //   const response = await requestAxios.post(`${BaseUrl}/boards`, { title, subtitle, content });
+    //   console.log(response);
+    // } catch (error) {
+    //   return error;
+    // }
   };
 
   const handleChange = e => {
