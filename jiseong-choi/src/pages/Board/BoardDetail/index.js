@@ -1,37 +1,48 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useCallback} from 'react'
 import axios from 'axios'
 
 function BoardDetail(props) {
 
-    const articleId = props.match.params.articleId
+    const boardId = props.match.params.id
 
-    const [Article, setArticle] = useState([])
+    const [board, setBoard] = useState([])
+
+    const getBoard = useCallback(async() =>{
+        const url = `https://tutor-dev-api.alpox.dev/boards/${boardId}`
+        const response = await axios.get(url)
+
+        if(response.status === 200){
+            const { data } = response
+            const { board } = data
+
+            setBoard(board)
+        } else{
+            alert('Cannot get board from the server.')
+        }
+        console.log(response)
+    })
 
     useEffect(() => {
-        axios.get(`https://tutor-dev-api.alpox.dev/boards/${articleId}`)
-            .then(response => {
-                console.log(response)
-                if (response.status === 200) {
-                    setArticle(response.data.board)
-                } else {
-                    alert('Cannot get Article from the server.')
-                }
-            })
+        getBoard()
     }, [])
+    
+    
+    const { title, subtitle, content, contentType,updatedAt, userId} = board
 
-    if (Article) {
-        return (
-            <div style={{display:'flex',alignItems:'center',justifyContent:'center', height:'78vh'}}>
-                글
+
+    return (
+        <>
+            <div>
+                <h1>{title}</h1>
+                <h3>{subtitle}</h3>
+                <p>{content}</p>
+                <br />
+                <p>{updatedAt}</p>
+                <h4>{userId}</h4>
             </div>
-        )
-    } else {
-        return (
-        <div style={{display:'flex',alignItems:'center',justifyContent:'center', height:'78vh'}}>
-            Loading...
-        </div>
+        </>
     )
-    }
 }
+
 
 export default BoardDetail
