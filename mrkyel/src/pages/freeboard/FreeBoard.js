@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Button } from 'atoms/button/Button';
-import axios from 'axios';
-import { BaseUrl } from 'config/constants';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
+import { requestAxios } from 'config/commonRequest';
+import UsePagination from 'Hooks/usePagination';
 
 const DummyBoard = [];
 
@@ -27,23 +27,37 @@ const FreeBoard = ({ history }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [perPage, setPerpage] = React.useState(10);
+  const [totalPage, setTotalPage] = React.useState(null);
+
   const handleSearch = async () => {
+    if (loading) return;
+
     try {
       setError(null);
       setData(null);
       setLoading(true);
-      await axios.get(`${BaseUrl}/boards`).then(res => {
-        setData(res.data.rows);
-      });
+
+      const res = await requestAxios.get(`/boards`);
+
+      setData(res.data.rows);
+      setTotalPage(res.data.count);
     } catch (e) {
       setError(e);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const writeBoard = () => {
     history.push('/writeboard');
   };
+
+  const indexOfLastPost = currentPage * perPage;
+  const indexOfFirstPost = indexOfLastPost - perPage;
+  const currentPosts = data?.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
@@ -52,7 +66,7 @@ const FreeBoard = ({ history }) => {
   return (
     <>
       <BoardWrapper>
-        <Button onClick={handleSearch} style={{ float: 'right', padding: 5 }} color={'deepskyblue'}>
+        <Button onClick={handleSearch} css={buttonStyle} color={'deepskyblue'}>
           조회
         </Button>
         <table css={tableStyle}>
@@ -65,7 +79,7 @@ const FreeBoard = ({ history }) => {
             </tr>
           </thead>
           <tbody>
-            {data.map(el => (
+            {currentPosts.map(el => (
               <tr key={el.id}>
                 <td>{el.subtitle}</td>
                 <td>
@@ -77,7 +91,13 @@ const FreeBoard = ({ history }) => {
             ))}
           </tbody>
         </table>
-        <Button onClick={writeBoard} style={{ float: 'right', padding: 5 }} color={'deepskyblue'}>
+        <UsePagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          perPage={perPage}
+          paginate={paginate}
+        />
+        <Button onClick={writeBoard} css={buttonStyle} color={'deepskyblue'}>
           글쓰기
         </Button>
       </BoardWrapper>
@@ -98,4 +118,9 @@ const BoardWrapper = styled.div`
 const tableStyle = css`
   height: 300px;
   font: initial;
+`;
+
+const buttonStyle = css`
+  float: right;
+  padding: 5px;
 `;

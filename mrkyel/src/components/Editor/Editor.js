@@ -4,12 +4,11 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Button } from 'atoms/button/Button';
 import useInputs from 'Hooks/useInputs';
-import './Editor.css';
 import { useState } from 'react';
 import { BaseUrl } from 'config/constants';
 import { requestAxios } from 'config/commonRequest';
-
 import { useHistory } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 const Editor = () => {
   const history = useHistory();
@@ -55,7 +54,7 @@ const Editor = () => {
   };
 
   return (
-    <div className={'editor-wrapper'}>
+    <div css={editorWrapperStyle}>
       <form>
         <select css={selectStyle} value={subtitle} onChange={handleChange}>
           <option value="total">전체</option>
@@ -86,10 +85,11 @@ const Editor = () => {
             console.log('Focus.', editor);
           }}
         />
-
-        <Button onClick={handleSubmit} style={{ float: 'right', padding: 5 }} color={'deepskyblue'}>
-          제출하기
-        </Button>
+        <ButtonWrarpper>
+          <Button onClick={handleSubmit} color={'deepskyblue'}>
+            제출하기
+          </Button>
+        </ButtonWrarpper>
       </form>
     </div>
   );
@@ -102,9 +102,17 @@ const selectStyle = css`
   height: 30px;
   width: 120px;
 `;
-
 const inputStyle = css`
   width: -webkit-fill-available;
   border: 1px solid #c4c4c4;
   padding: 10px;
+`;
+const editorWrapperStyle = css`
+  margin: 0 auto;
+  width: 1200px;
+  margin-top: 50px;
+`;
+const ButtonWrarpper = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;

@@ -2,7 +2,6 @@ import useInputs from 'Hooks/useInputs';
 import React from 'react';
 import { Button } from 'atoms/button/Button';
 import styled from '@emotion/styled';
-import { BaseUrl } from 'config/constants';
 import { requestAxios } from 'config/commonRequest';
 
 const Register = ({ history }) => {
@@ -14,14 +13,12 @@ const Register = ({ history }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(email, nickName, password);
 
     try {
-      await requestAxios.post(`${BaseUrl}/register`, { email, nickName, password }).then(res => {
-        console.log(res);
-        alert('회원가입을 축하합니다');
-        history.push('/');
-      });
+      const res = await requestAxios.post(`/register`, { email, nickName, password });
+      console.log(res);
+      alert('회원가입을 축하합니다');
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
