@@ -4,12 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthRouter } from './auth'
 import BoardRouter from './board'
 
-function RootRouter() {
+function RootRouter(props) {
     return (
         <BrowserRouter>
             <Layout>
-                <AuthRouter /> 
-                <BoardRouter />
+                <AuthRouter />
+                <BoardRouter accessToken={props.accessToken} />
             </Layout>
         </BrowserRouter>
     )

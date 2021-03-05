@@ -53,7 +53,7 @@ const BoardItem = ({board}) =>{
     return(
         <div className="board">
             <Link to={`/boards/${id}`}>
-            <h1 className="title">{title ? title.slice(0,6)+"..." :"무제"}</h1>
+            <h1 className="title">{title ? title.slice(0,8) :"무제"}</h1>
             <p className="subtitle" >{subtitle ? subtitle.slice(0,6)+"...": "부제 없음"}</p>
             </Link>
         </div>
