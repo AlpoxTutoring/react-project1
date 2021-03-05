@@ -1,16 +1,16 @@
-import BoardList from 'pages/Board/BoardList'
-import BoardUpload from 'pages/Board/BoardUpload'
-import BoardDetail from 'pages/Board/BoardDetail'
+import BoardList from 'pages/Board/List'
+import BoardUpload from 'pages/Board/Upload'
+import BoardDetail from 'pages/Board/Detail'
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 function BoardRouter() {
     return (
-        <>
-            <Route exact path="/boards" component={BoardList} /> 
+        <Switch>
+            <Route exact path="/" component={BoardList} /> 
             <Route exact path="/new" component={BoardUpload} />
             <Route exact path="/boards/:id" component={BoardDetail} />  
-        </>
+        </Switch>  
     )
 }
 

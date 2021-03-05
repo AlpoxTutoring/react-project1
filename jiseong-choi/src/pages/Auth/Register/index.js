@@ -9,6 +9,8 @@ function Register(props) {
         nickname: "",
         password: ""
     })
+    
+    const [loginLoading, setloginLoading] = useState("")
 
     const { email, nickname, password } = Inputs;
 

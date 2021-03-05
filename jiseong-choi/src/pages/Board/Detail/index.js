@@ -5,6 +5,10 @@ function BoardDetail(props) {
 
     const boardId = props.match.params.id
 
+    const user = props.accessToken
+
+    console.log(user)
+
     const [board, setBoard] = useState([])
 
     const getBoard = useCallback(async() =>{
@@ -40,6 +44,7 @@ function BoardDetail(props) {
                 <p>{updatedAt}</p>
                 <h4>{userId}</h4>
             </div>
+            
         </>
     )
 }
