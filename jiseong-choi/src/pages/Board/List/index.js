@@ -46,17 +46,22 @@ function BoardList() {
     )
 }
 
+const showContent = (content) =>{
+    return {__html:`${content}`}
+}
 
 const BoardItem = ({board}) =>{
     const {id, title, subtitle, content, contentType,updateAt, userId} = board
-
+    let contents = content ? content.slice(0,50) : "내용없음..."
     return(
-        <div className="board">
+        <div className="board">  
             <Link to={`/boards/${id}`}>
-            <h1 className="title">{title ? title.slice(0,8) :"무제"}</h1>
-            <p className="subtitle" >{subtitle ? subtitle.slice(0,6)+"...": "부제 없음"}</p>
+            <h1 className="title">{title ? title.slice(0,20) :"무제"}</h1>
+            <div className="title-under"></div>
+            <p className="subtitle" >{subtitle ? subtitle.slice(0,50): "부제 없음"}</p>
+            <p className="content" dangerouslySetInnerHTML={showContent(contents)} ></p>
             </Link>
-        </div>
+            </div>
     )
 }
 

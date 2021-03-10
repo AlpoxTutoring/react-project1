@@ -39,20 +39,23 @@ function BoardDetail(props) {
     
     const { title, subtitle, content, contentType,updatedAt, userId} = board
 
+    const showContent = (content) =>{
+        return {__html:`${content}`}
+    }
 
     return (
         <>
             <div className="Board">
                 <div>
-                <h1 className="boardTitle">{title}</h1>
-                <h3 className="boardSubTitle">{subtitle}</h3>
-                <p className="boardContent">{content}</p>
+                <h1 className="boardTitle">제목 : {title}</h1>
+                <h3 className="boardSubTitle">부제 : {subtitle}</h3>
+                <p className="boardContent" dangerouslySetInnerHTML={showContent(content)}></p>
                 <br />
                 <p className="boardUpdate">{updatedAt}</p>
                 <h4 className="boardUserId">{userId}</h4>
 
                 {
-                user 
+                user === userId
                 &&
                 <button onClick={boardDelete} >Delete</button>
                 }
