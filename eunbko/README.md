@@ -1,12 +1,118 @@
- REACT STUDY (MINTCAMP)
+# 1. Summary
 
- - style : styled-component 사용
+## 1. Purpose
+
+- Make function of basic commnuity Web service,,,
+- Develop community with Javascript, CRA without state management library (redux, mobx, recoli,,) aiming to strengthen the basics of React.
+- Thinking about the extensibility of the code in developing.
+- Inventing a efificent way to seperate components according to design.
+- Learn about the folder structure and build my own folder structure.
+- Think about why React use Atomic Design.
 
 
-routers: SPA를 라우팅하는 페이지, react-router-dom 을 사용합니다.
-pages : 페이지 하나를 담당합니다. 기본적인 Helmet 정보, 초기에 서버에 요청할 서버 데이터, Container를 1:1로 대응합니다.
-containers : 컴포넌트의 모음 (1:N) 관계, 데이터를 컴포넌트에게 전달하고 사용자의 행동에 따른 액션 (서버 요청)을 수행합니다.
-components : ui의 여러조합, 목록 밑 차트 같은 기능단의 가장 작은 단위입니다.
-ui : 디자인단의 가장 작은 단위입니다.
-services : REST API를 통해 서버에 요청하는 코드
-stores : context api를 이용, services를 데이터를 불러오고 state에 전역으로 state를 저장합니다.
+## 2. About
+
+- Title : "MintCamp" 
+- Base : create-react-app
+- Styles : styled-component
+
+# 2. Settings
+
+## 1. Available Scripts
+
+In the project directory, you can run:
+
+### `yarn install`
+
+### `yarn start`
+
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
+## 2. Structure of Folders
+
+> src
+> <br>
+>
+> > components 
+> > <br>
+> > containers 
+> > <br>
+> > pages
+> > <br>
+> > routers
+> > <br>
+> > utils
+> > <br>
+> > styles
+> > 
+> > > assets
+> > > <br>
+> > > ui
+
+1. Components (presentation components)
+
+- Smallest unit of functional groups such as multiple combinations of ui and charts below the list.
+
+2. Containers (container components)
+
+- Collections of components (1:N) transfers data to the components and performs actions accoring to user actions.
+
+3. Pages 
+
+- Responsible for one page.
+- Basically responds 1:1 with Helmet information, server data initially requested from the server, and container.
+
+4. Routers
+
+- Page to route SPA, Using 'react-router-dom'.
+- Base : RootRouter
+
+5. Utils (common utility)
+
+- A file of functions that are commonly used including custom hooks.
+- Include axios module setting file, that makes a request ro the server. (ex)api.ts or setupAxios.js)
+- Include commafy, lpad, commondate, history function file.
+
+> api call sample
+```javascript
+import api from 'src/utils/api';
+
+api
+.get('url', {
+  data: 'value',
+})
+.then(response => {})
+.catch(e => {});
+  ```
+
+6. Styles
+
+- assets : A file containing images and fonts file..
+- ui : smallest unit of ui (ex)Button.js)
+
+
+## 3. Setting file
+
+`.env` 
+`.prettierrc.json`
+`.eslintrc.json`
+`package.json`
+`jsconfig.json`
+
+
+## 4. DO NOT COMMIT FOLDER & FILES!!
+
+- .vscode
+- .idea
+- .eslintcache
+- node_modules
+- build
+- pakage-lock.json
+- yarn.lock
+- yarn-error.log
+
+

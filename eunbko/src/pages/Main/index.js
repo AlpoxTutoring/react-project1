@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { MainContainer } from '../../containers/Main';
+import { MainContainer } from 'containers/Main';
 import { Header, Footer, Modal, Portal } from 'components';
-import { HeaderButton } from '../../styles';
-import { api } from '../../utils/api';
-import { AuthPopup } from '../../containers/Main/AuthPopup';
+import { HeaderButton } from 'styles';
+import { api } from 'utils/api';
+import { LoginModal } from '../../containers/Auth';
 
 export function MainPage() {
   const history = useHistory();
@@ -14,12 +14,14 @@ export function MainPage() {
   const [email, setEmail] = useState('');
   const [nickNm, setNickNm] = useState('');
   const [pwd, setPwd] = useState('');
+
   // 사용자 가입 정보 저장
   const [userInfo, setUserInfo] = useState({
     email: '',
     nickname: '',
     password: '',
   });
+
   // 사용자 로그인 정보 저장
   const [loginInfo, setLoginInfo] = useState({
     id: '',
@@ -108,93 +110,8 @@ export function MainPage() {
 
   return (
     <>
-      <Header>
-        <HeaderButton
-          color="white"
-          background="#00BFA5"
-          onClick={() => handlePopup(0)}
-        >
-          로그인
-        </HeaderButton>
-        <HeaderButton
-          color="black"
-          background="lightgrey"
-          onClick={() => handlePopup(1)}
-        >
-          회원가입
-        </HeaderButton>
-      </Header>
       <MainContainer />
       <Footer />
-
-      {isShow && (
-        <Portal>
-          {/* <AuthPopup show={isShow} idx={popIdx}/>  -- show값 없데이트 안됨*/}
-          {popIdx === 0 && (
-            <Modal
-              title="Login"
-              confirmText="로그인"
-              cancelText="취소"
-              onConfirm={onConfirm}
-              onCancel={onCancel}
-              visible={isShow}
-            >
-              <span>
-                ID&nbsp;&nbsp;&nbsp;&nbsp;
-                <input placeholder="아이디를 입력하세요" />
-              </span>
-              <br />
-
-              <span>
-                PW&nbsp;&nbsp;
-                <input placeholder="비밀번호를 입력하세요" />
-              </span>
-            </Modal>
-          )}
-
-          {popIdx === 1 && (
-            <Modal
-              title="Join"
-              confirmText="가입"
-              cancelText="취소"
-              onConfirm={onConfirm}
-              onCancel={onCancel}
-              visible={isShow}
-            >
-              <span>
-                EMAIL&nbsp;
-                <input
-                  id="email"
-                  placeholder="이메일을 입력해주세요"
-                  onChange={e => onChange(e, 'id')}
-                />
-              </span>
-              <br />
-              <span>
-                NICKNAME&nbsp;
-                <input
-                  id="nickNm"
-                  placeholder="닉네임를 입력하세요"
-                  value={nickNm}
-                  maxLength={11}
-                  onChange={e => onChange(e, 'nickNm')}
-                />
-              </span>
-              <br />
-              <span>
-                PW&nbsp;
-                <input
-                  id="pw"
-                  type="password"
-                  placeholder="비밀번호를 입력하세요"
-                  maxLength={15}
-                  onChange={e => onChange(e, 'pw')}
-                />
-              </span>
-            </Modal>
-          )}
-        </Portal>
-      )}
     </>
   );
 }
