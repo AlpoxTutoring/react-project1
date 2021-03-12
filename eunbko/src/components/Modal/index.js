@@ -29,35 +29,38 @@ const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-
   position: fixed;
   top: 0;
   left: 0;
   z-index: 990;
-
   display: flex;
   flex-direction: column;
 `;
 
 export const ModalWrapper = styled.div`
-  width: 320px;
   padding: 1.5rem;
   background-color: white;
-
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 991;
-
-  h1 {
-    font-size: 1.5rem;
-    margin: 0;
-  }
-
-  p {
-    font-size: 1.15;
-  }
+  font-size: 1.5rem;
+  margin: 1px;
+  //top: 200%;
+  //padding-left: 0;
+  //padding-right: 0;
+  //transform: translate(0);
+  //-webkit-transform: translate(0);
+  //-moz-transform: translate(0);
+  //-ms-transform: translate(0);
+  //-o-transform: translate(0);
+  //transition: none;
+  //-webkit-transition: none;
+  //-moz-transition: none;
+  //-ms-transition: none;
+  //-o-transition: none;
+  //overflow-y: auto;
 `;
 
 const ModalButtonWrapper = styled.div`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import oc from 'open-color';
 import { HeaderButton } from '../../styles';
 import { LoginModal, RegisterModal } from 'containers';
+import logoImg from '../../styles/assets/smalllogo.jpg';
 
 export const Layout = ({ children }) => {
   const user = localStorage.token;
@@ -26,7 +27,8 @@ export const Layout = ({ children }) => {
     <LayoutWrapper>
       <HeaderWrapper>
         <HeaderContents>
-          <Logo>Mint Camp</Logo>
+          <img src={logoImg} alt="logo image"/>
+          <Logo>MINTCAMP</Logo>
           {/*{*/}
           {/*	!user && (*/}
           <Spacer />
@@ -100,6 +102,10 @@ const HeaderContents = styled.div`
   align-items: center;
   padding-right: 1rem;
   padding-left: 1rem;
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
 `;
 
 // 중간 여백
@@ -110,6 +116,8 @@ const Spacer = styled.div`
 const ButtonWrapper = styled.div`
   flex-grow: 1;
 `;
+
+
 
 const Logo = styled.h1`
   font-size: 22px;
