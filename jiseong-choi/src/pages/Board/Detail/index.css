@@ -1,7 +1,12 @@
 .Board{
+    margin: 0px 200px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border: 1px solid springgreen;
+    border-radius: 3%;
 }
 
 .boardTitle{
