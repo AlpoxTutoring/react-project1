@@ -56,10 +56,10 @@ const BoardItem = ({board}) =>{
     return(
         <div className="board">  
             <Link to={`/boards/${id}`}>
-            <h1 className="title">{title ? title.slice(0,20) :"무제"}</h1>
-            <div className="title-under"></div>
-            <p className="subtitle" >{subtitle ? subtitle.slice(0,50): "부제 없음"}</p>
-            <p className="content" dangerouslySetInnerHTML={showContent(contents)} ></p>
+                <h1 className="title">{title ? title.slice(0,20) :"무제"}</h1>
+                <div className="title-under"></div>
+                <p className="subtitle" >{subtitle ? subtitle.slice(0,50): "부제 없음"}</p>
+                <p className="content" dangerouslySetInnerHTML={showContent(contents)} ></p>
             </Link>
             </div>
     )
