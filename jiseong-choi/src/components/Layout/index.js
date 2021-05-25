@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
+import Menu from '../Menu/index'
 
 export const Layout = ({children}) =>{
 
@@ -13,7 +14,7 @@ export const Layout = ({children}) =>{
                     </h1>
                 </Link>
                 <nav className="menuList">
-                    {/*여기다가 로그인 회원가입 컴포넌트 집어 넣을 거임*/}
+                    <Menu />
                 </nav>
             </div>
 

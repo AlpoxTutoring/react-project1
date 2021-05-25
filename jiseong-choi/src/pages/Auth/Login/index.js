@@ -48,7 +48,7 @@ function Login(props) {
             <div className="login-container">
                 <form className="login-form" onSubmit={onSubmitHandler}>
                     <h2 className="login-form__title">Community</h2>
-                    <input required name="id" className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} />
+                    <input required name="id" className="login-form__input" placeholder="UserId" type="text" value={id} onChange={onChange} autoComplete="off" />
                     <input required name="password" className="login-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
                     <button className="login-button" type='submit' >
                         Login
