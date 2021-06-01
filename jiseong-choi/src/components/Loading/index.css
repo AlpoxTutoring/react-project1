@@ -1,0 +1,25 @@
+.LoadingWrapper {
+  margin-top: 50px;
+    width: 100%;
+    height: 100vh;
+  
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+    z-index: 999;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .LoadingText {
+    font-size: 18px;
+    line-height: 1.35;
+  
+    color: white;
+    font-weight: 400;
+  }

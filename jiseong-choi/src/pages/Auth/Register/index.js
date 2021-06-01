@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import './RegisterPage.css'
+import './index.css'
 
-function RegisterPage(props) {
+function Register(props) {
 
     const [Inputs, setInputs] = useState({
         email: "",
         nickname: "",
         password: ""
     })
+    
+    const [loginLoading, setloginLoading] = useState("")
 
     const { email, nickname, password } = Inputs;
 
@@ -50,8 +52,8 @@ function RegisterPage(props) {
             <div className="register-container">
                 <form className="register-form" onSubmit={onSubmitHandler}>
                     <h1 className="register-title">Community</h1>
-                    <input required name="email" className="register-form__input" placeholder="email" type="email" value={email} onChange={onChange} />
-                    <input required name="nickname" className="register-form__input" placeholder="NickName" type="text" value={nickname} onChange={onChange} />
+                    <input required name="email" className="register-form__input" placeholder="email" type="email" value={email} onChange={onChange} autoComplete="off" />
+                    <input required name="nickname" className="register-form__input" placeholder="NickName" type="text" value={nickname} onChange={onChange} autoComplete="off" />
                     <input required name="password" className="register-form__input" placeholder="Password" type="password" value={password} onChange={onChange} />
 
                     <br />
@@ -64,4 +66,4 @@ function RegisterPage(props) {
     )
 }
 
-export default RegisterPage
+export default Register

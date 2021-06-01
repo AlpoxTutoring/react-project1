@@ -3,7 +3,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios'
 
-function ArticleUploadPage(props) {
+function BoardUpload(props) {
 
     const token = window.localStorage.getItem('accessToken')
 
@@ -85,7 +85,7 @@ function ArticleUploadPage(props) {
 
 
     return (
-        <form onSubmit={onSubmit} style={{ width: '100%', height: '30vh', textAlign: 'center' }}>
+        <form onSubmit={onSubmit} style={{ marginTop: '50px', width: '100%', height: '30vh', textAlign: 'center' }}>
             <div>
                 <input value={title} name="title" onChange={onChange} placeholder="Title" />
                 <br />
@@ -102,6 +102,7 @@ function ArticleUploadPage(props) {
             </div>
             <div style={{ margin:'auto', width:'80%'}}>
                 <CKEditor
+                    style={{minHeight:'300px'}}
                     value={content}
                     name="content"
                     onChange={(event, editor) => {
@@ -109,6 +110,7 @@ function ArticleUploadPage(props) {
                         onContentChange({data});
                     }}
                     editor={ClassicEditor}
+                    
                     data="<p>Writing Zone!</p>"
                     onReady={(editor) => {
                         onContentChange(editor.data)
@@ -120,4 +122,4 @@ function ArticleUploadPage(props) {
     )
 }
 
-export default ArticleUploadPage
+export default BoardUpload

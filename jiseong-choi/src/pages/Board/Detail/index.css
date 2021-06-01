@@ -1,0 +1,25 @@
+.Board{
+    margin: 0px 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid springgreen;
+    border-radius: 3%;
+}
+
+.boardTitle{
+    margin-top: 30px;
+    font-size: 35px;
+}
+
+.boardSubTitle{
+    padding: 15px;
+    font-size: 28px;
+}
+
+.boardContent{
+    font-size: 25px;
+    font-weight: 600;
+}
