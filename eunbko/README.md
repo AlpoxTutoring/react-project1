@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# 1. Summary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Purpose
 
-## Available Scripts
+- Make function of basic commnuity Web service,,,
+- Develop community with Javascript, CRA without state management library (redux, mobx, recoli,,) aiming to strengthen the basics of React.
+- Thinking about the extensibility of the code in developing.
+- Inventing a efificent way to seperate components according to design.
+- Learn about the folder structure and build my own folder structure.
+- Think about why React use Atomic Design.
+
+
+## 2. About
+
+- Title : "MintCamp" 
+- Base : create-react-app
+- Styles : styled-component
+
+# 2. Settings
+
+## 1. Available Scripts
 
 In the project directory, you can run:
 
+### `yarn install`
+
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
 
-The page will reload if you make edits.\
+The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `yarn test`
+## 2. Structure of Folders
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> src
+> <br>
+>
+> > components 
+> > <br>
+> > containers 
+> > <br>
+> > pages
+> > <br>
+> > routers
+> > <br>
+> > utils
+> > <br>
+> > styles
+> > 
+> > > assets
+> > > <br>
+> > > ui
 
-### `yarn build`
+1. Components (presentation components)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Smallest unit of functional groups such as multiple combinations of ui and charts below the list.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Containers (container components)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Collections of components (1:N) transfers data to the components and performs actions accoring to user actions.
 
-### `yarn eject`
+3. Pages 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Responsible for one page.
+- Basically responds 1:1 with Helmet information, server data initially requested from the server, and container.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Routers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Page to route SPA, Using 'react-router-dom'.
+- Base : RootRouter
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. Utils (common utility)
 
-## Learn More
+- A file of functions that are commonly used including custom hooks.
+- Include axios module setting file, that makes a request ro the server. (ex)api.ts or setupAxios.js)
+- Include commafy, lpad, commondate, history function file.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> api call sample
+```javascript
+import api from 'src/utils/api';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+api
+.get('url', {
+  data: 'value',
+})
+.then(response => {})
+.catch(e => {});
+  ```
 
-### Code Splitting
+6. Styles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- assets : A file containing images and fonts file..
+- ui : smallest unit of ui (ex)Button.js)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 3. Setting file
 
-### Making a Progressive Web App
+`.env` 
+`.prettierrc.json`
+`.eslintrc.json`
+`package.json`
+`jsconfig.json`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## 4. DO NOT COMMIT FOLDER & FILES!!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- .vscode
+- .idea
+- .eslintcache
+- node_modules
+- build
+- pakage-lock.json
+- yarn.lock
+- yarn-error.log
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
